@@ -8,37 +8,21 @@ import org.junit.Test;
 
 public class TennisGameTest
 {
-	@Test
-	public void atTheBeginningOfTheGameTheScoreShouldBeDescribedAsLoveAll()
-	{
-		testScore(new TennisGameForTest(new TennisGame(), "love-all"));
-	}
 	
 	@Test
-	public void whenTheServerScoresTheScoreShouldBeFifteenLove()
-	{
-		TennisGame tennisGame = new TennisGame();
-		tennisGame.serverScores();
-		testScore(new TennisGameForTest(tennisGame, "fifteen-love"));
-	}
-	
-	@Test
-	public void whenTheReceiverScoresTheScoreShouldBeLoveFifteen()
-	{
-		TennisGame tennisGame = new TennisGame();
-		tennisGame.receiverScores();
-		testScore(new TennisGameForTest(tennisGame, "love-fifteen"));
-	}
-	
-	@Test
-	public void whenBothPlayersScoresTheScoreShouldBeFifteenAll()
+	public void whenOnePlayerScoresTheScoreIsCorrect()
 	{
 		TennisGame tennisGame = new TennisGame();
 		tennisGame.serverScores();
 		tennisGame.receiverScores();
-		testScore(new TennisGameForTest(tennisGame, "fifteen-all"));
+		tennisGame.receiverScores();
+		testScore(new TennisGameForTest(tennisGame, "fifteen-thirty"));
+		
+		TennisGame tennisGame2 = new TennisGame();
+		tennisGame2.serverScores();
+		tennisGame2.receiverScores();
+		testScore(new TennisGameForTest(tennisGame2, "fifteen-all"));
 	}
-	
 	
 	public void testScore(TennisGameForTest tennisGameForTest)
 	{
